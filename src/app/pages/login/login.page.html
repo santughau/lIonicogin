@@ -1,0 +1,37 @@
+<ion-content>
+  <div class="main_content_div">
+
+    <div>
+      <ion-label class="head_lbl text-center text-danger">लॉगिन करा
+      </ion-label>
+      <form #loginForm="ngForm">
+        <ion-input type="email" placeholder="Email" name="email" #email="ngModel" [(ngModel)]="login.email" required
+          email>
+        </ion-input>
+        <div *ngIf="email.invalid && email.touched ">
+          <ion-text color="danger text-center">
+            <h4 style="padding-left: 20px; margin-top: 10px;">कृपया ई-मेल लिहावा</h4>
+          </ion-text>
+        </div>
+
+        <ion-input type="text" placeholder="Password" name="password" #password="ngModel" [(ngModel)]="login.password"
+          required></ion-input>
+        <div *ngIf="password.invalid && password.touched ">
+          <ion-text color="danger text-center">
+            <h4 style="padding-left: 20px; margin-top: 10px;">कृपया पासवर्ड लिहावा</h4>
+          </ion-text>
+        </div>
+
+        <ion-button (click)="goToHome()" expand="block" [disabled]="loginForm.invalid">
+          Login
+        </ion-button>
+      </form>
+      <ion-label class="forgot" (click)="goToReset()">पासवर्ड विसरलात ? </ion-label>
+    </div>
+
+    <div class="bottom_div">
+      <ion-label (click)="goToRegister()">नवीन खाते तयार करायचे आहे का ? <span>Sign Up</span></ion-label>
+    </div>
+
+  </div>
+</ion-content>

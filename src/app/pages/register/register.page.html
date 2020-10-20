@@ -1,0 +1,110 @@
+<ion-content>
+  <div class="main_content_div">
+    <form #registration="ngForm">
+      <div>
+        <ion-label class="head_lbl text-danger">Create an Account</ion-label>
+        <hr>
+        <ion-input type="text" placeholder="संपूर्ण नाव " name="fullName" #fullName="ngModel"
+          [(ngModel)]="registerData.fullName" required></ion-input>
+
+        <div *ngIf="fullName.invalid && fullName.touched ">
+          <ion-text color="danger text-center">
+            <h4 style="padding-left: 20px; margin-top: 10px;">कृपया संपूर्ण नाव लिहावे</h4>
+          </ion-text>
+        </div>
+
+        <ion-input type="text" placeholder="मोबाईल  क्रमांक " name="mobile" #mobile="ngModel"
+          [(ngModel)]="registerData.mobile" required></ion-input>
+        <div *ngIf="mobile.invalid && mobile.touched ">
+          <ion-text color="danger text-center">
+            <h4 style="padding-left: 20px; margin-top: 10px;">कृपया मोबाईल क्रमांक लिहावा</h4>
+          </ion-text>
+        </div>
+
+
+
+        <ion-input type="email" placeholder="ई-मेल" name="email" #email="ngModel" [(ngModel)]="registerData.email"
+          required email></ion-input>
+        <div *ngIf="email.invalid && email.touched ">
+          <ion-text color="danger text-center">
+            <h4 style="padding-left: 20px; margin-top: 10px;">कृपया ई-मेल लिहावा</h4>
+          </ion-text>
+        </div>
+
+        <ion-input type="text" placeholder="शाळेचे  नाव" name="school" #school="ngModel"
+          [(ngModel)]="registerData.school" required></ion-input>
+        <div *ngIf="school.invalid && school.touched ">
+          <ion-text color="danger text-center">
+            <h4 style="padding-left: 20px; margin-top: 10px;">कृपया शाळेचे नाव लिहावे</h4>
+          </ion-text>
+        </div>
+
+
+        <ion-select placeholder="वर्ग निवडा " interface="popover" mode="ios" name="classId" #classId="ngModel"
+          [(ngModel)]="registerData.classId" required>
+          <ion-select-option value="{{classListSingle}}" *ngFor="let classListSingle of classList">
+            वर्ग {{classListSingle}}</ion-select-option>
+        </ion-select>
+        <div *ngIf="classId.invalid && classId.touched ">
+          <ion-text color="danger text-center">
+            <h4 style="padding-left: 20px; margin-top: 10px;">कृपया वर्ग निवडावा</h4>
+          </ion-text>
+        </div>
+
+
+        <ion-select placeholder="तुकडी निवडा  " interface="popover" mode="ios" name="division" #division="ngModel"
+          [(ngModel)]="registerData.division" required>
+          <ion-select-option value="{{div}}" *ngFor="let div of div">
+            तुकडी {{div}}</ion-select-option>
+        </ion-select>
+        <div *ngIf="division.invalid && division.touched ">
+          <ion-text color="danger text-center">
+            <h4 style="padding-left: 20px; margin-top: 10px;">कृपया तुकडी निवडावी</h4>
+          </ion-text>
+        </div>
+
+
+        <ion-select placeholder=" जिल्हा निवडा   " interface="popover" mode="ios" (ionChange)="OnDistChange($event)"
+          name="district" #district="ngModel" [(ngModel)]="registerData.district" required>
+          <ion-select-option value="{{dist.id}}" *ngFor="let dist of dist">
+            {{dist.name}}</ion-select-option>
+        </ion-select>
+        <div *ngIf="district.invalid && district.touched ">
+          <ion-text color="danger text-center">
+            <h4 style="padding-left: 20px; margin-top: 10px;">कृपया जिल्हा निवडावा</h4>
+          </ion-text>
+        </div>
+
+
+        <ion-select placeholder="तालुका  निवडा   " interface="popover" mode="ios" name="tal" #tal="ngModel"
+          [(ngModel)]="registerData.tal" required>
+          <ion-select-option value="{{taluka.id}}" *ngFor="let taluka of taluka">
+            {{taluka.taluka}}</ion-select-option>
+        </ion-select>
+        <div *ngIf="tal.invalid && tal.touched ">
+          <ion-text color="danger text-center">
+            <h4 style="padding-left: 20px; margin-top: 10px;">कृपया तालुका निवडावा</h4>
+          </ion-text>
+        </div>
+
+
+        <ion-input type="text" placeholder="पासवर्ड लिहा " name="password" #password="ngModel"
+          [(ngModel)]="registerData.password" required></ion-input>
+        <div *ngIf="password.invalid && password.touched ">
+          <ion-text color="danger text-center">
+            <h4 style="padding-left: 20px; margin-top: 10px;">कृपया पासवर्ड लिहावा</h4>
+          </ion-text>
+        </div>
+
+        <ion-button (click)="saveTeacher(registration)" expand="block" [disabled]="registration.invalid">
+          Sign Up
+        </ion-button>
+      </div>
+
+    </form>
+    <div class="bottom_div">
+      <ion-label (click)="goToLogin()">Already have an account ? <span>Sign In</span></ion-label>
+    </div>
+
+  </div>
+</ion-content>

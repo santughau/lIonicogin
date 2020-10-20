@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "attendance-cf4c6": {
+      "hosting": {
+        "app": [
+          "attendance-cf4c6"
+        ]
+      }
+    }
+  }
+}
